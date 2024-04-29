@@ -1,0 +1,30 @@
+.details {
+  float: left;
+  position: relative;
+  left: 50%;
+  color: white;
+  font-weight: lighter;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.eachItem {
+  margin-top: 50px;
+  float: left;
+  position: relative;
+  left: -45%;
+}
+.box {
+  width: 300px; /* Adjust width as needed */
+  float: left;
+}
+.activity,
+.type,
+.participants,
+.price {
+  height: 50px;
+  width: 190px;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  margin-bottom: 10px; /* Adjust spacing between rows */
+}
