@@ -21,10 +21,10 @@
 .participants,
 .price {
   height: 50px;
-  width: 190px;
-  border-radius: 10px;
+  width: 250px;
+  border-radius: 5px;
   padding: 10px;
-  background-color: black;
+  background-color: rgb(8, 51, 93);
   color: white;
   margin-bottom: 10px; /* Adjust spacing between rows */
 }

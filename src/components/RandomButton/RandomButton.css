@@ -5,12 +5,17 @@
 }
 
 .generateActivity {
-  background-color: #d9d9d9;
+  background-color: #f9f7f7;
   border-radius: 20px;
   border-color: #d9d9d9;
   font-family: Arial, Helvetica, sans-serif;
   border-style: none;
-  margin-top: 200px;
+  margin-top: 190px;
   padding: 10px;
   text-align: center;
+}
+
+.generateActivity:hover {
+  background-color: rgb(62, 140, 173);
+  cursor: pointer;
 }

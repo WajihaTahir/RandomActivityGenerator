@@ -1,19 +1,24 @@
-import React from "react";
+import "./Dropdown.css";
 
-const Dropdown = () => {
+// eslint-disable-next-line react/prop-types
+const Dropdown = ({ onChange }) => {
   return (
     <div className="custom-select">
-      <select>
+      <select
+        onChange={(e) => {
+          onChange(e);
+        }}
+      >
         <option value="">Choose Type</option>
-        <option value="">Recreational</option>
-        <option value="">Educational</option>
-        <option value="">DIY</option>
-        <option value="">Busywork</option>
-        <option value="">Cooking</option>
-        <option value="">Social</option>
-        <option value="">Charity</option>
-        <option value="">Relaxation</option>
-        <option value="">Music</option>
+        <option value="recreational">Recreational</option>
+        <option value="education">Educational</option>
+        <option value="diy">DIY</option>
+        <option value="busywork">Busywork</option>
+        <option value="cooking">Cooking</option>
+        <option value="social">Social</option>
+        <option value="charity">Charity</option>
+        <option value="relaxation">Relaxation</option>
+        <option value="music">Music</option>
       </select>
     </div>
   );
