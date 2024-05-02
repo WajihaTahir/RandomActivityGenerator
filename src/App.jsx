@@ -12,10 +12,19 @@ function App() {
   const [type, setType] = useState("");
   const [participants, setParticipants] = useState(0);
 
-  const api = "http://www.boredapi.com/api/activity/";
+  const api = "http://www.boredapi.com/api/activity";
 
-  async function fetchActivity(apiUrl) {
+  async function fetchActivity() {
     try {
+      let apiUrl = api;
+      if (type && participants) {
+        apiUrl += `?type=${type}&participants=${participants}`;
+      } else if (type) {
+        apiUrl += `?type=${type}`;
+      } else if (participants) {
+        apiUrl += `participants=${participants}`;
+      }
+
       setLoading(true);
       const response = await fetch(apiUrl);
       const responseData = await response.json();
@@ -38,19 +47,19 @@ function App() {
     fetchActivity(api);
   }
 
-  function onClickType() {
-    if (type) {
-      const apiType = `http://www.boredapi.com/api/activity?type=${type}`;
-      fetchActivity(apiType);
-    }
-  }
+  // function onClickType() {
+  //   if (type) {
+  //     const apiType = `http://www.boredapi.com/api/activity?type=${type}`;
+  //     fetchActivity(apiType);
+  //   }
+  // }
 
-  function onClickParticipant() {
-    if (participants) {
-      const apiParticipants = `http://www.boredapi.com/api/activity?participants=${participants}`;
-      fetchActivity(apiParticipants);
-    }
-  }
+  // function onClickParticipant() {
+  //   if (participants) {
+  //     const apiParticipants = `http://www.boredapi.com/api/activity?participants=${participants}`;
+  //     fetchActivity(apiParticipants);
+  //   }
+  // }
 
   return (
     <>
@@ -65,18 +74,15 @@ function App() {
           <RandomButton
             type={type}
             participants={participants}
-            onClick={
-              type ? onClickType : participants ? onClickParticipant : onClick
-            }
+            onClick={onClick}
           />
 
           {loading ? (
             <ClockLoader
               color="rgba(255, 255, 255, 1)"
-              cssOverride={null}
-              loading
               size={50}
-              speedMultiplier={1}
+              speedMultiplier={0.5}
+              className="loading"
             />
           ) : (
             <ActivityDetail data={data} />

@@ -11,6 +11,7 @@ const NoOfParticipants = ({ onChange }) => {
           type="number"
           id="participants"
           min={0}
+          max={5}
           onChange={(e) => {
             onChange(e);
           }}
