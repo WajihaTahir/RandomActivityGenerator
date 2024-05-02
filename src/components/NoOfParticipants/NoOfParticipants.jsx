@@ -10,6 +10,7 @@ const NoOfParticipants = ({ onChange }) => {
         <input
           type="number"
           id="participants"
+          min={0}
           onChange={(e) => {
             onChange(e);
           }}

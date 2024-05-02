@@ -1,16 +1,9 @@
-.participantsNumber {
-  display: flex;
-  margin-left: 50%;
-}
-
 .participantsLabel {
   text-align: center;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
+  margin-right: 10px;
 }
-
 input {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 40px;
 }

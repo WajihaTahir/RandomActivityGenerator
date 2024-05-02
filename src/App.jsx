@@ -1,10 +1,10 @@
-import { useState } from "react";
 import "./App.css";
 import RandomButton from "./components/RandomButton/RandomButton";
 import ActivityDetail from "./components/ActivityDetails/ActivityDetail";
 import Dropdown from "./components/Dropdown/Dropdown";
 import ClockLoader from "react-spinners/ClockLoader";
 import NoOfParticipants from "./components/NoOfParticipants/NoOfParticipants";
+import { useState } from "react";
 
 function App() {
   const [data, setData] = useState({});
@@ -14,49 +14,15 @@ function App() {
 
   const api = "http://www.boredapi.com/api/activity/";
 
-  const apiType = `http://www.boredapi.com/api/activity?type=${type}`;
-
-  const apiParticipants = `http://www.boredapi.com/api/activity?participants=${participants}`;
-
-  async function onClick() {
+  async function fetchActivity(apiUrl) {
     try {
       setLoading(true);
-      const response = await fetch(api);
-      console.log("response", response);
-      const resJson = await response.json();
-      console.log("resjson", resJson);
-      setData(resJson);
+      const response = await fetch(apiUrl);
+      const responseData = await response.json();
+      setData(responseData);
       setLoading(false);
     } catch (error) {
-      console.log("error occured while fetching data", error);
-    }
-  }
-
-  async function fetchByType() {
-    try {
-      setLoading(true);
-      const responseType = await fetch(apiType);
-      console.log("responseType", responseType);
-      const resTypeJson = await responseType.json();
-      console.log("resTypeJson", resTypeJson);
-      setData(resTypeJson);
-      setLoading(false);
-    } catch (error) {
-      console.log("error fetching type's activities", error);
-    }
-  }
-
-  async function fetchByParticipants() {
-    try {
-      setLoading(true);
-      const responseParticipants = await fetch(apiParticipants);
-      console.log("response", responseParticipants);
-      const resJsonParticipants = await responseParticipants.json();
-      console.log("resjson", resJsonParticipants);
-      setData(resJsonParticipants);
-      setLoading(false);
-    } catch (error) {
-      console.log("error occured while fetching data", error);
+      console.log("Error occurred while fetching data", error);
     }
   }
 
@@ -64,19 +30,25 @@ function App() {
     setParticipants(e.target.value);
   }
 
-  function onClickParticipant() {
-    if (participants) {
-      fetchByParticipants(participants);
-    }
-  }
-
   function onTypeChange(e) {
     setType(e.target.value);
   }
 
+  function onClick() {
+    fetchActivity(api);
+  }
+
   function onClickType() {
     if (type) {
-      fetchByType(type);
+      const apiType = `http://www.boredapi.com/api/activity?type=${type}`;
+      fetchActivity(apiType);
+    }
+  }
+
+  function onClickParticipant() {
+    if (participants) {
+      const apiParticipants = `http://www.boredapi.com/api/activity?participants=${participants}`;
+      fetchActivity(apiParticipants);
     }
   }
 
@@ -85,8 +57,11 @@ function App() {
       <div className="gradient">
         <div className="container">
           <h2>Random Activity Generator</h2>
-          <Dropdown onChange={onTypeChange} />
-          <NoOfParticipants onChange={onParticipantChange} />
+          <div className="parameters">
+            <NoOfParticipants onChange={onParticipantChange} />
+
+            <Dropdown onChange={onTypeChange} />
+          </div>
           <RandomButton
             type={type}
             participants={participants}
