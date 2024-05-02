@@ -24,7 +24,7 @@ const ActivityDetail = ({ data }) => {
         <div className="box">
           <div className="participants">
             <p>
-              <b>Paricipants: </b> {participants}
+              <b>Participants: </b> {participants}
             </p>
           </div>
 

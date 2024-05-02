@@ -4,6 +4,7 @@ import "./Dropdown.css";
 const Dropdown = ({ onChange }) => {
   return (
     <div className="custom-select">
+      <p>Choose Type: </p>
       <select
         onChange={(e) => {
           onChange(e);
