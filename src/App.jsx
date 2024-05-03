@@ -5,6 +5,7 @@ import Dropdown from "./components/Dropdown/Dropdown";
 import ClockLoader from "react-spinners/ClockLoader";
 import NoOfParticipants from "./components/NoOfParticipants/NoOfParticipants";
 import { useState } from "react";
+import Reset from "./components/Reset/Reset";
 
 function App() {
   const [data, setData] = useState({});
@@ -24,7 +25,6 @@ function App() {
       } else if (participants) {
         apiUrl += `participants=${participants}`;
       }
-
       setLoading(true);
       const response = await fetch(apiUrl);
       const responseData = await response.json();
@@ -35,6 +35,10 @@ function App() {
     }
   }
 
+  function onClick() {
+    fetchActivity(api);
+  }
+
   function onParticipantChange(e) {
     setParticipants(e.target.value);
   }
@@ -43,23 +47,11 @@ function App() {
     setType(e.target.value);
   }
 
-  function onClick() {
-    fetchActivity(api);
+  function onReset() {
+    setParticipants(0);
+    setType("");
+    setData({});
   }
-
-  // function onClickType() {
-  //   if (type) {
-  //     const apiType = `http://www.boredapi.com/api/activity?type=${type}`;
-  //     fetchActivity(apiType);
-  //   }
-  // }
-
-  // function onClickParticipant() {
-  //   if (participants) {
-  //     const apiParticipants = `http://www.boredapi.com/api/activity?participants=${participants}`;
-  //     fetchActivity(apiParticipants);
-  //   }
-  // }
 
   return (
     <>
@@ -67,9 +59,13 @@ function App() {
         <div className="container">
           <h2>Random Activity Generator</h2>
           <div className="parameters">
-            <NoOfParticipants onChange={onParticipantChange} />
+            <NoOfParticipants
+              onChange={onParticipantChange}
+              value={participants}
+            />
 
-            <Dropdown onChange={onTypeChange} />
+            <Dropdown onChange={onTypeChange} value={type} />
+            <Reset onChange={onReset} />
           </div>
           <RandomButton
             type={type}

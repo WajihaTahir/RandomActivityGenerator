@@ -1,6 +1,6 @@
 import "./NoOfParticipants.css";
 
-const NoOfParticipants = ({ onChange }) => {
+const NoOfParticipants = ({ onChange, value }) => {
   return (
     <div className="participantsNumber">
       <form>
@@ -8,6 +8,7 @@ const NoOfParticipants = ({ onChange }) => {
           No of Participants:
         </label>
         <input
+          value={value}
           type="number"
           id="participants"
           min={0}

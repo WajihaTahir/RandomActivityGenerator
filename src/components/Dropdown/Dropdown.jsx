@@ -1,10 +1,11 @@
 import "./Dropdown.css";
 
 // eslint-disable-next-line react/prop-types
-const Dropdown = ({ onChange }) => {
+const Dropdown = ({ onChange, value }) => {
   return (
     <div className="custom-select">
       <select
+        value={value}
         onChange={(e) => {
           onChange(e);
         }}
