@@ -9,7 +9,7 @@ There are two filters for it by using which a user can search for an activity, e
 
 <img width="1269" alt="Screenshot 2024-05-05 at 1 09 18 PM" src="https://github.com/WajihaTahir/RandomActivityGenerator/assets/144616811/66773ba5-8e4d-480c-83e0-39d6867f30c5">
 
-<h2>Technologies used</h2>
+<h2>Technologies Used:</h2>
 
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
